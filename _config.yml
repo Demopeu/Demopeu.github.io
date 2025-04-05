@@ -19,14 +19,14 @@ locale                   : "ko-KR"
 rtl                      : # true, false (default) # turns direction of the page into right to left for RTL languages
 title                    : "井"
 title_separator          : "|"
-subtitle                 : "마치 Oriental Salad처럼 어우러지는 code를 만드는 개발자"
+subtitle                 : "마치 오리엔탈 샐러드처럼 어우러지는 코드를 만드는 개발자"
 name                     : "Kim Dong Hyun"
 description              : "우물 안에서 무언가 만드는 사람"
 url                      : "https://Demopeu.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
 teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
-logo                     : # path of logo image to display in the masthead, e.g. "/assets/images/88x88.png"
+logo                     : "/assets/images/logo.png"
 masthead_title           : # overrides the website title displayed in the masthead, use " " for no title
 breadcrumbs              : true # false (default)
 words_per_minute         : 200
@@ -114,7 +114,7 @@ analytics:
 # Site Author
 author:
   name             : "Kim Dong Hyun"
-  avatar           : "/assets/images/logo.png"
+  avatar           : "/assets/images/KDH.jpg"
   bio              : "우물 안에서 무언가 만드는 사람"
   location         : "Next to 늙탱버"
   email            : "dnanf12345@gmail.com"

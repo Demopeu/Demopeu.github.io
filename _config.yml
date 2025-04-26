@@ -113,10 +113,9 @@ analytics:
 # Site Author
 author:
   name: "Kim Dong Hyun"
-  avatar: "/assets/images/avatar.png"
+  avatar: "/assets/images/avatar2.png"
   bio: "우물 안에서 무언가 만드는 사람"
-  location: "Next to 늙탱버"
-  email: "dnanf12345@gmail.com"
+  location: "Somewhere on nextjs.org"
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
@@ -288,8 +287,11 @@ defaults:
       related: true
       show_date: true
       toc: true
+
+# TOC(목차) 설정
 toc_sticky: true
 toc_label: 목차
 toc_icon: "fab fa-octopus-deploy"
 
+# 날짜 형식
 date_format: "%Y-%m-%d"

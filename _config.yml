@@ -113,7 +113,7 @@ analytics:
 # Site Author
 author:
   name: "Kim Dong Hyun"
-  avatar: "/assets/images/avatar2.png"
+  avatar: "/assets/images/avatar2.webp"
   bio: "우물 안에서 무언가 만드는 사람"
   location: "Somewhere on nextjs.org"
   links:

@@ -285,11 +285,10 @@ defaults:
       related: true
       show_date: true
       toc: true
-
-# TOC(목차) 설정
-toc_sticky: true
-toc_label: 목차
-toc_icon: "fab fa-octopus-deploy"
+      # TOC(목차) 설정
+      toc_sticky: true
+      toc_label: "목차"
+      toc_icon: "fab fa-octopus-deploy"
 
 # 날짜 형식
 date_format: "%Y-%m-%d"

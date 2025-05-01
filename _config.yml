@@ -289,7 +289,7 @@ defaults:
       # TOC(목차) 설정
       toc_sticky: true
       toc_label: "목차"
-      toc_icon: "octopus-deploy"
+      toc_icon: "wine-glass"
 
 # 날짜 형식
 date_format: "%Y-%m-%d"

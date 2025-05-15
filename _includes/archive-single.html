@@ -19,39 +19,45 @@ assign title = post.title | markdownify | remove: "
     endif
     %}
   >
-    {% if teaser %}
     <div
-      class="archive__item-teaser"
-      style="float: left; margin-right: 15px; max-width: 120px"
+      class="archive__item-flex"
+      style="display: flex; gap: 16px; align-items: flex-start"
     >
-      <img
-        src="{{ teaser | relative_url }}"
-        alt="{{ post.image.alt | default: 'thumbnail' }}"
-        style="width: 100%; height: auto"
-      />
-    </div>
-    {% endif %}
-
-    <h2
-      class="archive__item-title no_toc"
-      itemprop="headline"
-      style="overflow: hidden"
-    >
-      {% if post.link %}
-      <a href="{{ post.link }}">{{ title }}</a>
-      <a href="{{ post.url | relative_url }}" rel="permalink">
-        <i class="fas fa-link" aria-hidden="true" title="permalink"></i>
-        <span class="sr-only">Permalink</span>
-      </a>
-      {% else %}
-      <a href="{{ post.url | relative_url }}" rel="permalink">{{ title }}</a>
+      {% if teaser %}
+      <div class="archive__item-teaser" style="flex: 0 0 120px">
+        <img
+          src="{{ teaser | relative_url }}"
+          alt="{{ post.image.alt | default: 'thumbnail' }}"
+          style="width: 100%; height: auto; border-radius: 6px"
+        />
+      </div>
       {% endif %}
-    </h2>
 
-    {% include page__meta.html type=include.type %} {% if post.excerpt %}
-    <p class="archive__item-excerpt" itemprop="description">
-      {{ post.excerpt | markdownify | strip_html | truncate: 160 }}
-    </p>
-    {% endif %}
+      <div class="archive__item-body" style="flex: 1">
+        <h2
+          class="archive__item-title no_toc"
+          itemprop="headline"
+          style="margin-top: 0"
+        >
+          {% if post.link %}
+          <a href="{{ post.link }}">{{ title }}</a>
+          <a href="{{ post.url | relative_url }}" rel="permalink">
+            <i class="fas fa-link" aria-hidden="true" title="permalink"></i>
+            <span class="sr-only">Permalink</span>
+          </a>
+          {% else %}
+          <a href="{{ post.url | relative_url }}" rel="permalink"
+            >{{ title }}</a
+          >
+          {% endif %}
+        </h2>
+
+        {% include page__meta.html type=include.type %} {% if post.excerpt %}
+        <p class="archive__item-excerpt" itemprop="description">
+          {{ post.excerpt | markdownify | strip_html | truncate: 160 }}
+        </p>
+        {% endif %}
+      </div>
+    </div>
   </article>
 </div>

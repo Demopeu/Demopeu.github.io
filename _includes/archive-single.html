@@ -20,11 +20,16 @@ assign title = post.title | markdownify | remove: "
     %}
   >
     <div
-      class="archive__item-flex"
-      style="display: flex; gap: 16px; align-items: flex-start"
+      class="archive__top"
+      style="
+        display: grid;
+        grid-template-columns: 120px 1fr;
+        gap: 16px;
+        align-items: start;
+      "
     >
       {% if teaser %}
-      <div class="archive__item-teaser" style="flex: 0 0 120px">
+      <div class="archive__item-teaser">
         <img
           src="{{ teaser | relative_url }}"
           alt="{{ post.image.alt | default: 'thumbnail' }}"
@@ -33,7 +38,7 @@ assign title = post.title | markdownify | remove: "
       </div>
       {% endif %}
 
-      <div class="archive__item-body" style="flex: 1">
+      <div class="archive__item-header">
         <h2
           class="archive__item-title no_toc"
           itemprop="headline"
@@ -52,12 +57,17 @@ assign title = post.title | markdownify | remove: "
           {% endif %}
         </h2>
 
-        {% include page__meta.html type=include.type %} {% if post.excerpt %}
-        <p class="archive__item-excerpt" itemprop="description">
-          {{ post.excerpt | markdownify | strip_html | truncate: 160 }}
-        </p>
-        {% endif %}
+        {% include page__meta.html type=include.type %}
       </div>
     </div>
+
+    <!-- 아래쪽: 내용 요약 (전체 너비) -->
+    {% if post.excerpt %}
+    <div class="archive__item-excerpt" style="margin-top: 12px">
+      <p itemprop="description" style="margin: 0">
+        {{ post.excerpt | markdownify | strip_html | truncate: 160 }}
+      </p>
+    </div>
+    {% endif %}
   </article>
 </div>

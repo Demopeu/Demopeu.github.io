@@ -28,15 +28,47 @@ assign title = post.title | markdownify | remove: "
         align-items: start;
       "
     >
-      {% if teaser %}
-      <div class="archive__item-teaser">
-        <img
-          src="{{ teaser | relative_url }}"
-          alt="{{ post.image.alt | default: 'thumbnail' }}"
-          style="width: 100%; height: auto; border-radius: 6px"
-        />
+      <div
+        class="archive__top"
+        style="
+          display: grid;
+          grid-template-columns: 120px 1fr;
+          gap: 16px;
+          align-items: center;
+        "
+      >
+        {% if teaser %}
+        <div class="archive__item-teaser">
+          <img
+            src="{{ teaser | relative_url }}"
+            alt="{{ post.image.alt | default: 'thumbnail' }}"
+            style="width: 100%; height: auto; border-radius: 6px"
+          />
+        </div>
+        {% endif %}
+
+        <div class="archive__item-header">
+          <h2
+            class="archive__item-title no_toc"
+            itemprop="headline"
+            style="margin-top: 0"
+          >
+            {% if post.link %}
+            <a href="{{ post.link }}">{{ title }}</a>
+            <a href="{{ post.url | relative_url }}" rel="permalink">
+              <i class="fas fa-link" aria-hidden="true" title="permalink"></i>
+              <span class="sr-only">Permalink</span>
+            </a>
+            {% else %}
+            <a href="{{ post.url | relative_url }}" rel="permalink"
+              >{{ title }}</a
+            >
+            {% endif %}
+          </h2>
+
+          {% include page__meta.html type=include.type %}
+        </div>
       </div>
-      {% endif %}
 
       <div class="archive__item-header">
         <h2

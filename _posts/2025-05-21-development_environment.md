@@ -6,7 +6,7 @@ tags:
   - git
   - husky
   - 커밋컨벤션
-  - FrontEnd
+  - frontend
 image:
   path: https://Demopeu.github.io/images/logo/HUSKY.png
   alt: "HUSKY"
@@ -102,7 +102,7 @@ module.exports = {
 };
 ```
 
-- 💡 위 규칙은 팀 상황에 맞게 커스터마이징 가능
+💡 위 규칙은 팀 상황에 맞게 커스터마이징 가능
 
 ---
 

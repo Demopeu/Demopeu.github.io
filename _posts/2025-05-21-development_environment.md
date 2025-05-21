@@ -18,38 +18,39 @@ sidebar:
 use_math: true
 ---
 
-![BAEKJOON](https://Demopeu.github.io/images/logo/HUSKY.png)
+![HUSKY](https://Demopeu.github.io/images/logo/HUSKY.png)
 
-# ✅ Husky + Commitlint 수동 설정 가이드
+## ✅ Husky + Commitlint 수동 설정 가이드
 
-Git 커밋 메시지의 일관성을 유지하기 위해 `Husky`와 `Commitlint`를 수동으로 설정 하는 방법을 소개하려고 한다.
+{:.lead}
+Git 커밋 메시지의 일관성을 유지하기 위해 `Husky`와 `Commitlint`를 **CLI 없이 수동으로 설정**하는 방법을 소개하려고 한다.
 
 ---
 
-## 1. `.husky` 폴더에 `commit-msg`와 `pre-commit` 수동 작성
+## 1. `.husky` 폴더에 훅 파일 수동 작성
 
-### 📄 .husky/commit-msg
+### `.husky/commit-msg`
 
-```sh
+{% highlight sh %}
 #!/bin/sh
 npx commitlint --edit "$1"
-```
+{% endhighlight %}
 
-### 📄 .husky/pre-commit
+### `.husky/pre-commit`
 
-```sh
+{% highlight sh %}
 #!/bin/sh
 pnpm run check-before-commit
-```
+{% endhighlight %}
 
 ---
 
 ## 2. 실행 권한 부여
 
-```bash
+{% highlight bash %}
 chmod +x .husky/commit-msg
 chmod +x .husky/pre-commit
-```
+{% endhighlight %}
 
 ---
 
@@ -71,8 +72,9 @@ chmod +x .husky/pre-commit
 pnpm add -D husky @commitlint/cli @commitlint/config-conventional
 ```
 
+🧩 터보레포 환경에서는 루트에 설치해야 함:
+
 ```bash
-# 터보레포 이용 시 상위 설치가 필요
 pnpm add -D -w husky @commitlint/cli @commitlint/config-conventional
 ```
 
@@ -100,17 +102,17 @@ module.exports = {
 };
 ```
 
-상황에 맞게 변형하면 된다.
+- 💡 위 규칙은 팀 상황에 맞게 커스터마이징 가능
 
 ---
 
 ## 6. Git 훅 연결 (수동 방식)
 
-```bash
+{% highlight bash %}
 echo '#!/bin/sh' > .git/hooks/commit-msg
 echo 'exec .husky/commit-msg "$@"' >> .git/hooks/commit-msg
 chmod +x .git/hooks/commit-msg
-```
+{% endhighlight %}
 
 ---
 
@@ -122,3 +124,11 @@ git add .
 git commit -m "잘못된 메시지"  # ❌ 막혀야 정상
 git commit -m "feat: 허스키 설정"  # ✅ 통과
 ```
+
+---
+
+## 8. 📌 마무리
+
+- pnpm husky install 없이도 수동 연결로 동작 가능(install을 8버전부터 지원하지 않음)
+
+- .git/hooks/commit-msg는 반드시 .husky/commit-msg를 실행하도록 설정

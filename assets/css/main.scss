@@ -5,5 +5,26 @@ search: false
 
 @charset "utf-8";
 
+/* 사용자 정의 변수 설정 */
+$content-width: 800px;
+$base-font-size: 18px;
+$base-line-height: 1.75;
+
+h2 {
+  font-size: 1.8rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+.highlight pre,
+pre {
+  background-color: #2d2d2d;
+  color: #f8f8f2;
+  padding: 1em;
+  border-radius: 5px;
+}
+
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
 @import "minimal-mistakes"; // main partials

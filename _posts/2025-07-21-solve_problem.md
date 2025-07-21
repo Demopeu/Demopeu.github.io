@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "[Baekjoon] 23293/아주 서바이벌/javascript"
+title: "[Baekjoon] 2910/빈도 정렬/javascript"
 categories: 문제풀이
 tags:
   - javascript
@@ -204,9 +204,9 @@ console.log(solution(input));
 
 <strong style="font-size: 1.2em">⚡ Javascript</strong>
 
-![js_result](https://Demopeu.github.io/images/2025-07-21/j_result.PNG)
+![js_result](https://Demopeu.github.io/images/2025-07-21/j_result.png)
 
-[백준문제 보러가기](https://www.acmicpc.net/problem/23293)
+[백준문제 보러가기](https://www.acmicpc.net/problem/2910)
 
 ---
 

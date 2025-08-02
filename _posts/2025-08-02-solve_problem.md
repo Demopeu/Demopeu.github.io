@@ -126,30 +126,30 @@ nokoriTime이라는 변수명은 일본어와 영어가 혼합되어 있습니�
 songLength, downloadTime } 형태의 객체 배열로 변환한 후, 이 배열을 순회하며 문제를 푸는  
  방식입니다.
 
-    1 // 입력 처리 분리 예시
-    2 const fs = require("fs");
-    3 const input = fs.readFileSync("./input.txt").().trim().split('\n');
-    4 const N = Number(input[0]);                  t
-    5 const songs = [];                            o
-    6 for (let i = 1; i <= N; i++) {               S
-    7   const [D, V] = input[i].split(' ').map(Number);
-    8   songs.push({ songLength: D, downloadTime: V });
-    9 }                                            i
+// 입력 처리 분리 예시
 
-10 n
-11 let startTime = 0; g
-12 let playBuffer = 0;
-13
-14 for (const song of songs) {
-15 if (playBuffer < song.downloadTime) {
-16 startTime += song.downloadTime - playBuffer;
-17 playBuffer = song.songLength;
-18 } else {
-19 playBuffer = playBuffer - song.downloadTime + song.songLength;
-20 }
-21 }
-22
-23 console.log(startTime);
+```
+const fs = require("fs");
+const input = fs.readFileSync("./input.txt").().trim().split('\n');
+const N = Number(input[0]);                  t
+const songs = [];                            o
+for (let i = 1; i <= N; i++) {               S
+const [D, V] = input[i].split(' ').map(Number);
+songs.push({ songLength: D, downloadTime: V });
+}
+
+let startTime = 0; g
+let playBuffer = 0;
+for (const song of songs) {
+if (playBuffer < song.downloadTime) {
+startTime += song.downloadTime - playBuffer;
+playBuffer = song.songLength;
+} else {
+playBuffer = playBuffer - song.downloadTime + song.songLength;
+}
+}
+console.log(startTime);
+```
 
 총평
 

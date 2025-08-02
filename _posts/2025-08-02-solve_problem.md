@@ -162,7 +162,7 @@ songLength, downloadTime } 형태의 객체 배열로 변환한 후, 이 배열�
 
 <strong style="font-size: 1.2em">⚡ Javascript</strong>
 
-![js_result](https://Demopeu.github.io/images/2025-08-02/j_result.PNG)
+![js_result](https://Demopeu.github.io/images/2025-08-02/j_result.png)
 
 [백준문제 보러가기](https://www.acmicpc.net/problem/3216)
 

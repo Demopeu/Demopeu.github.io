@@ -86,8 +86,6 @@ for (let i = 1; i <= Number(input[0] * 2); i += 2) {
 console.log(startTime);
 ```
 
----
-
 # 🧠 코드 리뷰
 
 작성하신 코드는 그리디 알고리즘의 핵심을 잘 파악하여 문제를 정확하게 해결하고 있습니다.
@@ -126,9 +124,8 @@ nokoriTime이라는 변수명은 일본어와 영어가 혼합되어 있습니�
 songLength, downloadTime } 형태의 객체 배열로 변환한 후, 이 배열을 순회하며 문제를 푸는  
  방식입니다.
 
-// 입력 처리 분리 예시
-
 ```
+// 입력 처리 분리 예시
 const fs = require("fs");
 const input = fs.readFileSync("./input.txt").().trim().split('\n');
 const N = Number(input[0]);                  t
@@ -156,8 +153,6 @@ console.log(startTime);
 문제에 대한 핵심적인 접근과 논리 전개는 매우 훌륭합니다. 위에서 제안한 몇 가지 스타일과  
  구조적인 개선을 적용한다면, 더욱 안정적이고 가독성 높은 코드가 될 것입니다. 수고하셨습니다
 
----
-
 # 💻결과
 
 <strong style="font-size: 1.2em">⚡ Javascript</strong>
@@ -165,8 +160,6 @@ console.log(startTime);
 ![js_result](https://Demopeu.github.io/images/2025-08-02/j_result.png)
 
 [백준문제 보러가기](https://www.acmicpc.net/problem/3216)
-
----
 
 # 🖱️참고 링크
 

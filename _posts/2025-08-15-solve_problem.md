@@ -116,4 +116,4 @@ function solution(nums) {
 
 # 🖱️참고 링크
 
-[Set - JavaScript | MDN](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Set)
+[MDN- Set(JavaScript)](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Set)

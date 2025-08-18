@@ -100,6 +100,24 @@ function solution(arr) {
 }
 ```
 
+그리고, 친구한테 왜 return에 if 쓰면 안되냐 라는 질문을 받았음. return은 expression이 필요한 자리라서 안된다고 했는데,
+
+expression : 값이 될 수 있는 것
+
+- 리터럴: 1, "a", true, [], {}
+- 식 결합: a + b, obj.x, fn(), new Date()
+- 대입/논리/삼항: x = 3, a && b, cond ? A : B
+- 함수/화살표 함수 “표현식”: (function() {}), (x) => x + 1
+- JSX: <Div /> (TSX/JSX에서는 이것도 표현식)
+
+statement : 문장
+
+- 선언류: function f(){}, class C {}, var/let/const x = 1;, import/export
+- 제어문: if, for, while, switch, try/catch/finally
+- 기타: try...catch, throw, return, break, continue, 블록 { ... }
+
+이정도로 분류 가능한듯?
+
 # 🧠 코드 리뷰
 
 - **정확성**: `arr.filter((num, i) => num !== arr[i + 1])`는 연속 중복을 제거하며 각 구간의 "마지막 원소"를 보존합니다. 예시 입력에 대해 기대 결과와 일치합니다.

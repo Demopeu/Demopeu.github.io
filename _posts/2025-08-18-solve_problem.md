@@ -92,14 +92,6 @@ function solution(arr) {
 
 그와중에, 이게 filter 보다 더 빠름;;
 
-## 📖내가 작성한 JS Code
-
-```javascript
-function solution(arr) {
-  return arr.filter((num, i) => num !== arr[i + 1]);
-}
-```
-
 그리고, 친구한테 왜 return에 if 쓰면 안되냐 라는 질문을 받았음. return은 expression이 필요한 자리라서 안된다고 했는데,
 
 expression : 값이 될 수 있는 것
@@ -117,6 +109,14 @@ statement : 문장
 - 기타: try...catch, throw, return, break, continue, 블록 { ... }
 
 이정도로 분류 가능한듯?
+
+## 📖내가 작성한 JS Code
+
+```javascript
+function solution(arr) {
+  return arr.filter((num, i) => num !== arr[i + 1]);
+}
+```
 
 # 🧠 코드 리뷰
 

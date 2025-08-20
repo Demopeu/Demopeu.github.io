@@ -31,17 +31,17 @@ use_math: true
 
 <strong style="font-size: 1.5em">📥 입력</strong>
 
-| s             |
-| --------------- |
-| "()()" |
-| "(()())"     |
+| s        |
+| -------- |
+| "()()"   |
+| "(()())" |
 
 <strong style="font-size: 1.5em"> 📤 출력</strong>
 
-| result    |
-| --------- |
-| true |
-| true     |
+| result |
+| ------ |
+| true   |
+| true   |
 
 <strong style="font-size: 1.5em">📏 제한 사항</strong>
 
@@ -73,41 +73,48 @@ true
 ## 📖내가 작성한 JS Code
 
 ```javascript
-function solution(s){
-    return ([...s].reduce((acc,cur)=>{
-        if (acc === -1){
-            return acc
-        } else if (cur === "("){
-            acc+=1
-        } else if(acc>0) {
-            acc-=1
-        } else{
-            return -1
-        }
-        return acc
-        },0)) === 0 ? true : false;
+function solution(s) {
+  return [...s].reduce((acc, cur) => {
+    if (acc === -1) {
+      return acc;
+    } else if (cur === "(") {
+      acc += 1;
+    } else if (acc > 0) {
+      acc -= 1;
+    } else {
+      return -1;
+    }
+    return acc;
+  }, 0) === 0
+    ? true
+    : false;
 }
 ```
 
 # 🧠 코드 리뷰
+
 - **동작 요약**
+
   - `reduce`로 누적 카운트를 계산하며, 불가능 상태를 `-1` 센티넬로 고정해 조기 실패를 표현합니다. 최종 누적값이 0이면 `true`를 반환합니다.
 
 - **좋은 점**
+
   - 시간 복잡도 O(n)으로 요구사항 충족.
   - 불가능 상태를 빠르게 전파해 추가 연산을 줄이려는 의도가 좋습니다.
 
 - **개선 사항**
+
   - 문자열을 배열로 언팩(`[...]`)하고 `reduce`를 쓰면 불필요한 메모리(O(n))가 발생합니다. 단순 카운터 + 조기 반환이 더 직관적이고 효율적입니다.
   - 마지막 반환의 삼항 연산자(`=== 0 ? true : false`)는 불필요합니다. 불 표현식 그대로 반환하세요.
   - 센티넬 `-1` 패턴은 의도 파악에 시간이 걸릴 수 있어 가독성이 떨어집니다.
 
 - **권장 구현(가독성/성능 우선)**
+
   ```javascript
   function solution(s) {
     let count = 0;
     for (const ch of s) {
-      if (ch === '(') count++;
+      if (ch === "(") count++;
       else {
         if (count === 0) return false; // 닫는 괄호가 더 많음
         count--;
@@ -118,6 +125,7 @@ function solution(s){
   ```
 
 - **복잡도**
+
   - 시간: O(n)
   - 공간: O(1) (권장안), O(n) (현재 `spread + reduce`)
 
@@ -133,7 +141,6 @@ function solution(s){
 ![js_result](https://Demopeu.github.io/images/result/20250819js.png)
 
 [프로그래머스 문제 보러가기](https://school.programmers.co.kr/learn/courses/30/lessons/12909)
-[프로그래머스 문제 보러가기](https://school.programmers.co.kr/learn/courses/30/lessons/12906)
 
 # 🖱️참고 링크
 

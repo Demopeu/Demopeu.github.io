@@ -6,8 +6,7 @@ tags:
   - javascript
   - 프로그래머스
   - 알고리즘
-  - 완전탐색
-  - dfs
+  - 그리디알고리즘
 
 image:
   path: https://Demopeu.github.io/images/logo/PROGRAMMERS.png
@@ -183,4 +182,8 @@ function solution(n, lost, reserve) {
 
 # 🖱️참고 링크
 
-[MDN- 클로저](https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Closures)
+[MDN- sort](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/sort)
+<br>
+[MDN- reduce](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce)
+<br>
+[MDN- filter](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)

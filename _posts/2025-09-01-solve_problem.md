@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "[Programmers] 42862#/체육복/javascript"
+title: "[Programmers] 42862/체육복/javascript"
 categories: 문제풀이
 tags:
   - javascript
@@ -178,7 +178,7 @@ function solution(n, lost, reserve) {
 
 ![js_result](https://Demopeu.github.io/images/result/20250901js.png)
 
-[프로그래머스 문제 보러가기](https://school.programmers.co.kr/learn/courses/30/lessons/42862#)
+[프로그래머스 문제 보러가기](https://school.programmers.co.kr/learn/courses/30/lessons/42862)
 
 # 🖱️참고 링크
 

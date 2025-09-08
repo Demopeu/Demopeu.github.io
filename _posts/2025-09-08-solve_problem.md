@@ -45,9 +45,10 @@ use_math: true
 
 <strong style="font-size: 1.5em">📏 제한 사항</strong>
 
-- 노드의 개수 n은 2 이상 20,000 이하입니다.
-- 간선은 양방향이며 총 1개 이상 50,000개 이하의 간선이 있습니다.
-- vertex 배열 각 행 [a, b]는 a번 노드와 b번 노드 사이에 간선이 있다는 의미입니다.
+- 컴퓨터의 개수 n은 1 이상 200 이하인 자연수입니다.
+- 각 컴퓨터는 0부터 n-1인 정수로 표현합니다.
+- i번 컴퓨터와 j번 컴퓨터가 연결되어 있으면 computers[i][j]를 1로 표현합니다.
+- computer[i][i]는 항상 1입니다.
 
 <strong style="font-size: 1.5em">📥 예제 입력</strong>
 
@@ -115,31 +116,37 @@ function solution(n, computers) {
 # 🧠 코드 리뷰
 
 - 장점
+
   - 인접 행렬(`computers`)을 인접 리스트(`routes: Set[]`)로 변환해 중복 간선을 제거하고, BFS로 연결 요소(네트워크) 개수를 세는 정석적 접근입니다.
   - 자기 자신(`i === idx`)을 제외한 간선만 추가하여 셀프 루프를 방지한 점이 명확합니다.
   - `Set`을 사용하여 동일 간선 중복 추가를 피한 것은 좋습니다.
 
 - 버그(필수 수정)
-  1) 큐 원소 타입 불일치로 인한 런타임 오류 가능
+
+  1. 큐 원소 타입 불일치로 인한 런타임 오류 가능
      - 초기 삽입 시 `q.push([i])`로 배열을 넣고, 이후에는 `q.push(com)`으로 숫자를 넣습니다. `shift()` 후 `const cur = q.shift();`에서 `cur`가 배열/숫자가 섞여 `routes[cur]` 인덱싱이 깨집니다.
      - 수정: 큐에는 항상 숫자만 넣으세요. 예) 시작은 `q.push(i)`, 내부도 `q.push(next)`처럼 일관 유지.
-  2) `for (const com of [...routes[cur]])`의 스프레드는 불필요하며, 변수명도 의미가 모호합니다. `for (const next of routes[cur])`로 바로 순회하세요.
+  2. `for (const com of [...routes[cur]])`의 스프레드는 불필요하며, 변수명도 의미가 모호합니다. `for (const next of routes[cur])`로 바로 순회하세요.
 
 - 개선 제안/리팩터링 포인트
-  1) 방문 배열 크기: `Array(n + 1)`는 과합니다. 인덱스가 0..(n-1)이므로 `Array(n)`으로 충분합니다.
-  2) 큐 성능: `Array.prototype.shift()`는 O(N)입니다. 헤드 포인터를 두는 방식으로 바꾸면 BFS가 O(V+E)에 가깝게 동작합니다.
-  3) 메모리 절약 대안: 인접 리스트를 만들지 않고 인접 행렬을 직접 순회하며 BFS를 수행하면 `Set`/배열 생성 비용을 줄일 수 있습니다(시간·공간 트레이드오프).
-  4) 네이밍: `routes`, `q`, `com` 등은 목적이 드러나도록 `adj`, `queue`, `next` 등으로 개선하면 가독성이 좋아집니다.
+
+  1. 방문 배열 크기: `Array(n + 1)`는 과합니다. 인덱스가 0..(n-1)이므로 `Array(n)`으로 충분합니다.
+  2. 큐 성능: `Array.prototype.shift()`는 O(N)입니다. 헤드 포인터를 두는 방식으로 바꾸면 BFS가 O(V+E)에 가깝게 동작합니다.
+  3. 메모리 절약 대안: 인접 리스트를 만들지 않고 인접 행렬을 직접 순회하며 BFS를 수행하면 `Set`/배열 생성 비용을 줄일 수 있습니다(시간·공간 트레이드오프).
+  4. 네이밍: `routes`, `q`, `com` 등은 목적이 드러나도록 `adj`, `queue`, `next` 등으로 개선하면 가독성이 좋아집니다.
 
 - 정확성
+
   - 각 미방문 정점에서 시작한 BFS가 끝날 때마다 `answer++`를 수행하면 연결 요소의 개수를 정확히 세게 됩니다(무가중치 그래프에서 연결성 판단은 BFS로 충분).
 
 - 복잡도
+
   - 인접 리스트 구축: O(n^2) — 인접 행렬 전체를 한 번 스캔
   - BFS: O(V + E) — 포인터 큐 사용 시
   - 공간: 인접 리스트 O(V + E), 방문 배열 O(V)
 
 - 엣지 케이스 체크리스트
+
   - 완전 분리 그래프: 대각만 1이고 나머지 0인 경우 → 결과는 n
   - 완전 연결 그래프: 모든 i != j가 1인 경우 → 결과는 1
   - 비대칭 입력(이상치): `computers[i][j] !== computers[j][i]`인 행렬이 들어오면 현재 양방향으로 보정하여 `routes`를 만들기 때문에 연결성 판단엔 문제 없음
@@ -166,7 +173,8 @@ function solution(n, computers) {
   const queue = new Array(n * n);
   for (let start = 0; start < n; start++) {
     if (visited[start]) continue;
-    let head = 0, tail = 0;
+    let head = 0,
+      tail = 0;
     queue[tail++] = start;
     visited[start] = true;
     while (head < tail) {

@@ -86,12 +86,19 @@ js는 몫을 하는 //가 주석이기 때문에 여러가지 방법이 있다.
 
 ```javascript
 function solution(n, times) {
-    let [start, end] = [1,Math.max(...times)*n];
-    while (start<=end){
-        const mid = Math.floor((start+end)/2);
-        const people = times.reduce((acc,cur)=> acc+ Math.floor(mid/cur),0);
-        if (people>=n) end = mid -1;
-        else start = mid+1;
+    let [start, end] = [1, Math.min(...times) * n];
+
+    while (start <= end) {
+        const mid = Math.floor((start + end) / 2);
+        let people = 0;
+
+        for (let i = 0; i < times.length; i++) {
+            people += Math.floor(mid / times[i]);
+            if (people >= n) break; // early break
+        }
+
+        if (people >= n) end = mid - 1;
+        else start = mid + 1;
     }
     return start;
 }
